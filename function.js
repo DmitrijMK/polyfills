@@ -1,28 +1,55 @@
 // 14) Function.bind
 Function.prototype.myBind = function myBind(context) {
-    var self = this;
-    var arg1 = [].slice.call(arguments, 1);
+    let func = this;
+    let previousArgs = [].slice.call(arguments, 1);
 
-    return function () {
-        var arg2 = [].slice.call(arguments);
-        return self.apply(context, arg1.concat(arg2));
-    }
+    return function(){
+        let currentArgs = [].slice.call(arguments);
+        return func.apply(context, previousArgs.concat(currentArgs));
+    };
 };
 
 // 15) Function.call
 Function.prototype.myCall = function myCall(context) {
-    if (typeof this !== 'function') {
-        throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+    let name = "unique" + Math.random();
+    let args = [];
+    context[name] = this;
+
+    for (let i = 1; i < arguments.length; i++) {
+        args[i - 1] = "arguments[" + i + "]";
     }
+
+    let construct = new Function('context, name, arguments', 'return context[name](' + args + ');');
+    let result = construct(context, name, arguments);
+    delete context[name];
+
+    return result;
+};
+
+Object.prototype.es6Call = function myCall(obj, ...value) {
+    return this.apply(obj, value);
 };
 
 // 16) Function.apply
-Function.prototype.myApply = function myApply(context) {
-    if (typeof this !== 'function') {
-        throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+Function.prototype.myApply = function myApply(context, argsArray) {
+    let name = "unique" + Math.random();
+    let args = [];
+    context[name] = this;
+
+    for (let i = 0; i < argsArray.length; i++) {
+        args[i] = "argsArray[" + i + "]";
     }
+
+    let construct = new Function('context, name, argsArray', 'return context[name](' + args + ');');
+    let result = construct(context, name, argsArray);
+    delete context[name];
+
+    return result;
 };
 
+Object.prototype.es6Apply = function myApply(obj, value) {
+    return this.call(obj, ...value);
+};
 // ------------------ //
 
 const obj1 = {
