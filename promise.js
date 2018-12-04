@@ -5,17 +5,17 @@ Promise.customAll = function (prArr) {
         let resolvedCount = 0;
         const result = [];
 
-        prArr.forEach(function (pr, index) {
-            pr.then(function (v) {
+        for (let i = 0; i < prArr.length; i++) {
+            prArr[i].then(function (res) {
                     resolvedCount++;
-                    result[index] = v;
+                    result[i] = res;
 
                     if (resolvedCount === prArr.length) resolve(result);
                 },
                 function (err) {
                     reject(err)
                 });
-        });
+        }
     });
 };
 
@@ -23,13 +23,13 @@ Promise.customAll = function (prArr) {
 // с каким результатом завершится первый из переданных обещаний.
 Promise.customRace = function (prArr) {
     return new Promise(function (resolve, reject) {
-        prArr.forEach(function (pr) {
-            pr.then(function (v) {
-                    return resolve(v)
+        for (let i = 0; i < prArr.length; i++) {
+            prArr[i].then(function (res) {
+                    return resolve(res)
                 },
                 function (err) {
                     reject(err)
                 });
-        });
+        }
     });
 };
