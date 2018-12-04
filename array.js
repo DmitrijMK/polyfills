@@ -1,4 +1,4 @@
-// 3) Array.pop - Удаляет последний элемент из массива и возвращает его:
+// Array.pop() - Удаляет последний элемент из массива и возвращает его:
 Array.prototype.myPop = function myPop() {
     let element;
     for (let i = 0; i < this.length; i++)
@@ -8,7 +8,7 @@ Array.prototype.myPop = function myPop() {
     return element;
 };
 
-// 4) Array.push - Добавляет элемент в конец массива
+// Array.push() - Добавляет элемент в конец массива
 Array.prototype.myPush = function myPush() {
     for (let i = 0; i < arguments.length; i++) {
         this[this.length] = arguments[i];
@@ -17,7 +17,7 @@ Array.prototype.myPush = function myPush() {
     return this.length;
 };
 
-// 5) Array.shift - Удаляет из массива первый элемент и возвращает его
+// Array.shift() - Удаляет из массива первый элемент и возвращает его
 Array.prototype.myShift = function myShift() {
     let deletedElement = this[0];
 
@@ -29,7 +29,7 @@ Array.prototype.myShift = function myShift() {
     return deletedElement;
 };
 
-// 6) Array.unshift - Добавляет элемент в начало массива
+// Array.unshift() - Добавляет элемент в начало массива
 Array.prototype.myUnShift = function myUnShift() {
     for (let i = this.length - 1; i >= 0; i--) {
         this[i + arguments.length] = this[i];
@@ -42,7 +42,7 @@ Array.prototype.myUnShift = function myUnShift() {
     return this.length;
 };
 
-// 7) Array.map
+// Array.map() - создаёт новый массив с результатом вызова указанной функции для каждого элемента массива.
 Array.prototype.myMap = function myMap(callback) {
     let array = [];
 
@@ -53,14 +53,14 @@ Array.prototype.myMap = function myMap(callback) {
     return array;
 };
 
-// 8) Array.forEach
+// Array.forEach() - выполняет функцию callback над каждым элем. в []
 Array.prototype.myForEach = function myForEach(callback) {
     for (let i = 0; i < this.length; i++) {
         this[i] = callback(this[i], i, this);
     }
 };
 
-// 9) Array.filter
+// Array.filter() - return только те элементы исходного [], где функция callback возвратила true
 Array.prototype.myFilter = function myFilter(callback) {
     let array = [];
 
@@ -73,7 +73,7 @@ Array.prototype.myFilter = function myFilter(callback) {
     return array;
 };
 
-// 10) Array.reverse
+// Array.reverse() - обращает порядок следования элементов массива.
 Array.prototype.myReverse = function myReverse() {
     let array = [];
 
@@ -90,7 +90,7 @@ Array.prototype.myReverse = function myReverse() {
     return this;
 };
 
-// 11) Array.join
+// Array.join - бъединяет все элементы массива в строку (или массивоподобного объекта).
 Array.prototype.myJoin = function myJoin(param) {
     let str = '';
 
@@ -121,7 +121,7 @@ Array.prototype.myJoin = function myJoin(param) {
     return str;
 };
 
-// 12) Array.reduce
+// Array.reduce - применяет функцию к аккумулятору и каждому значению массива, сводя его к одному значению.
 Array.prototype.myReduce = function myReduce(callback, prevItem) {
     let sum = prevItem;
     let i = 0;
@@ -138,7 +138,7 @@ Array.prototype.myReduce = function myReduce(callback, prevItem) {
     return sum;
 };
 
-// 13) Array.sort
+// Array.sort - сортирует элементы массива
 Array.prototype.mySort = function mySort(userCallback) {
     let callback = (userCallback) ? userCallback : basicCallback;
     let changed = false;
@@ -165,7 +165,7 @@ Array.prototype.mySort = function mySort(userCallback) {
     } while (changed);
 };
 
-// 18) Array.some
+// Array.some - return true, если хотя бы для одного элемента массива callback вернул true.
 Array.prototype.mySome = function mySome(callback) {
     if (this == null) {
         throw new TypeError('this is null or not defined');
@@ -178,7 +178,7 @@ Array.prototype.mySome = function mySome(callback) {
     return false;
 };
 
-// 19) Array.every
+// Array.every - return true, если callback для всех элем. [] вернул true.
 Array.prototype.myEvery = function myEvery(callback) {
     if (this == null) {
         throw new TypeError('this is null or not defined');
@@ -191,7 +191,7 @@ Array.prototype.myEvery = function myEvery(callback) {
     return true;
 };
 
-// ----- //
+// ------------------------------------------ //
 let arr = [-1,0,1,2,3,4,5];
 let positive = value => value >= 0;
 

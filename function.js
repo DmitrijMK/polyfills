@@ -1,4 +1,4 @@
-// 14) Function.bind
+// Function.bind
 Function.prototype.myBind = function myBind(context) {
     let func = this;
     let previousArgs = [].slice.call(arguments, 1);
@@ -9,7 +9,7 @@ Function.prototype.myBind = function myBind(context) {
     };
 };
 
-// 15) Function.call
+// Function.call
 Function.prototype.myCall = function myCall(context) {
     let name = "unique" + Math.random();
     let args = [];
@@ -30,7 +30,7 @@ Object.prototype.es6Call = function myCall(obj, ...value) {
     return this.apply(obj, value);
 };
 
-// 16) Function.apply
+// Function.apply
 Function.prototype.myApply = function myApply(context, argsArray) {
     let name = "unique" + Math.random();
     let args = [];
