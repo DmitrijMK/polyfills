@@ -1,4 +1,4 @@
-// new  =========================
+// new - создает экземпляр объекта, имеющего конструктор. (операторная функция)
 function myNew(func) {
     const that = Object.create(func.prototype);
     func.apply(that);
