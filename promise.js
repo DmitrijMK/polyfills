@@ -1,6 +1,6 @@
 // Promise.ALL - возвращает promise, выполнится, когда будут выполнены все
 // переданные в виде перечисляемого аргумента, или отклонено любое из.
-Promise.prototype.all = function (prArr) {
+Promise.customAll = function (prArr) {
     return new Promise((resolve, reject) => {
         let resolvedCount = 0;
         const result = [];
@@ -19,7 +19,7 @@ Promise.prototype.all = function (prArr) {
 
 // Promise.RACE - возвращает выполненый или отклоненый promise, в зависимости от того,
 // с каким результатом завершится первый из переданных обещаний.
-Promise.prototype.race = function (prArr) {
+Promise.customRace = function (prArr) {
     return new Promise((resolve, reject) => {
         prArr.forEach(pr => {
             pr.then(v => resolve(v),
