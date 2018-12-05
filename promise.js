@@ -2,16 +2,16 @@
 // переданные в виде перечисляемого аргумента, или отклонено любое из.
 Promise.customAll = function (prArr) {
     return new Promise(function (resolve, reject) {
-        let resolvedCount = 0;
-        const result = [];
+        var resolvedCount = 0;
+        var result = [];
 
-        for (let i = 0; i < prArr.length; i++) {
+        for (var i = 0; i < prArr.length; i++) {
             prArr[i].then(function (res) {
                     resolvedCount++;
                     result[i] = res;
 
                     if (resolvedCount === prArr.length) resolve(result);
-                },
+                }.bind(i),
                 function (err) {
                     reject(err)
                 });
@@ -23,10 +23,10 @@ Promise.customAll = function (prArr) {
 // с каким результатом завершится первый из переданных обещаний.
 Promise.customRace = function (prArr) {
     return new Promise(function (resolve, reject) {
-        for (let i = 0; i < prArr.length; i++) {
+        for (var i = 0; i < prArr.length; i++) {
             prArr[i].then(function (res) {
                     return resolve(res)
-                },
+                }.bind(i),
                 function (err) {
                     reject(err)
                 });
