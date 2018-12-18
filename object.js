@@ -1,6 +1,6 @@
 // Object.assign - используется для копирования значений всех собственных перечисляемых свойств
 // из одного или более исходных объектов в целевой объект.
-Object.prototype.myAssign = function myAssign(target) {
+Object.myAssign = function myAssign(target) {
     if (!target) throw new TypeError('Can`t convert');
     const result = Object(target);
     const sources = [].slice.call(arguments, 1);
@@ -17,7 +17,7 @@ Object.prototype.myAssign = function myAssign(target) {
 };
 
 // Object.create - создаёт новый объект с указанными объектом прототипа и свойствами.
-Object.prototype.myCreate = function myCreate(obj, propertiesObject) {
+Object.myCreate = function myCreate(obj, propertiesObject) {
     function F() {
     }
 
@@ -30,7 +30,7 @@ Object.prototype.myCreate = function myCreate(obj, propertiesObject) {
 // Object.keys - возвращает массив из собственных перечисляемых свойств переданного объекта,
 // в том же порядке, в котором они бы обходились циклом for...in
 // Разница между циклом и методом в том, что цикл перечисляет свойства и из цепочки прототипов.
-Object.prototype.myKeys = function myKeys(obj) {
+Object.myKeys = function myKeys(obj) {
     let arr = [];
 
     for (let key in obj) {
@@ -45,7 +45,7 @@ Object.prototype.myKeys = function myKeys(obj) {
 // Object.freeze - предотвращает добавление новых свойств к объекту,
 // удаление и изменение существующих свойств, значения их атрибутов перечисляемости, настраиваемости и записываемости.
 // Возвращает замороженный объект.
-Object.prototype.myFreeze = function myFreeze(obj) {
+Object.myFreeze = function myFreeze(obj) {
     Object.preventExtensions(obj);
 
     for (let key in obj) {
